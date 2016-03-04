@@ -11,4 +11,13 @@
 
     <TextView android:id="@+id/welcome" android:layout_width="wrap_content"
         android:layout_height="wrap_content" android:text="@string/welcome" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_button"
+        android:id="@+id/startButton"
+        android:layout_below="@+id/welcome"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="201dp" />
 </RelativeLayout>
