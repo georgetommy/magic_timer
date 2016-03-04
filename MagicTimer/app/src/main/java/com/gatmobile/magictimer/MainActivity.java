@@ -1,5 +1,6 @@
 package com.gatmobile.magictimer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -26,6 +27,12 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    public void startTimer(View view){
+        System.out.println("hello I am starting");
+        Intent intent = new Intent(this, TimerActivity.class);
+        startActivity(intent);
     }
 
     @Override
