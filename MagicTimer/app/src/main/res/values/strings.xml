@@ -8,4 +8,18 @@
     <string name="start_button">Start</string>
     <string name="title_activity_timer">TimerActivity</string>
 
+    <!-- Timer Activity -->
+    <string name="chrono_start">start</string>
+    <string name="chrono_pause">pause</string>
+    <string name="chrono_reset">reset</string>
+    <string name="chrono_next">next</string>
+
+    <string name="player_1">Player 1</string>
+    <string name="player_2">Player 2</string>
+    <string name="player_3">Player 3</string>
+    <string name="player_4">Player 4</string>
+    <string name="player_5">Player 5</string>
+    <string name="player_6">Player 6</string>
+
+
 </resources>
