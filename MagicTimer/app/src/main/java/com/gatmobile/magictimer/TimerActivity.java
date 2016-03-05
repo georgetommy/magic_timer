@@ -88,6 +88,7 @@ public class TimerActivity extends AppCompatActivity {
 						TimeUnit.MILLISECONDS.toSeconds(SystemClock.elapsedRealtime())+
 						")");
 
+
 				Player currentPlayer = players.get(currentNbPlayer);
 				currentPlayer.getChronometer_total().stop();
 				currentPlayer.setTimeChronometer(currentPlayer.getTimeChronometer() + millis);
@@ -111,55 +112,14 @@ public class TimerActivity extends AppCompatActivity {
 				currentNbPlayer = (currentNbPlayer + 1) % totalNbPlayers;
 				currentPlayer = players.get(currentNbPlayer);
 
-
 				currentPlayer.getChronometer_total().setBase(SystemClock.elapsedRealtime() -
-						totalTimePassedInOtherTimers(currentPlayer));
+						(TimeUnit.MILLISECONDS.toMinutes(currentPlayer.getTimeChronometer()) *
+								60000 + TimeUnit.MILLISECONDS.toSeconds(currentPlayer.getTimeChronometer
+								()) *
+								1000));
 				currentPlayer.getChronometer_total().start();
 
 				System.out.println("base is " + currentPlayer.getChronometer_total().getBase());
-
-
-				//
-
-				/*System.out.println("saving time for player: " + currentNbPlayer + " / " +
-						currentPlayer.getName() + " = " + currentPlayer.getChronometer_total()
-						.getBase() + " / " +
-						chronometer.getBase() + " elapsed " + SystemClock.elapsedRealtime() + ", "
-
-						);
-				System.out.println("time gone in seconds " + TimeUnit.MILLISECONDS.toSeconds(
-						(SystemClock.elapsedRealtime()-chronometer.getBase())));
-				currentPlayer.setTimeChronometer(currentPlayer.getTimeChronometer() + SystemClock.elapsedRealtime()-chronometer.getBase());
-				System.out.println("total time in seconds: " + TimeUnit.MILLISECONDS.toSeconds
-						(currentPlayer.getTimeChronometer()));
-				*//*currentPlayer.getChronometer_total().setBase(
-						SystemClock.elapsedRealtime() -	(+currentPlayer.getChronometer_total()
-								.getBase() + chronometer.getBase()));*//*
-				currentPlayer.getChronometer_total().setBase(currentPlayer.getTimeChronometer());
-				currentPlayer.getChronometer_total().start();
-				currentPlayer.getChronometer_total().stop();
-				currentNbPlayer = (currentNbPlayer + 1) % totalNbPlayers;
-
-
-				currentPlayer = players.get(currentNbPlayer);
-				System.out.println("the time for next player: " + currentNbPlayer + " / " +
-						currentPlayer.getName() + " = " +
-						chronometer.getBase());
-				reset();
-				start();
-				chronometer.start();
-				//currentPlayer.getChronometer_total().setBase(
-				//		chronometer.getBase());
-				*//*currentPlayer.getChronometer_total().setBase(
-						SystemClock.elapsedRealtime() -	(+currentPlayer.getChronometer_total()
-								.getBase() + chronometer.getBase()));*//*
-
-				currentPlayer.getChronometer_total().start();
-
-				//currentPlayer.getChronometer().setBase(SystemClock.elapsedRealtime());
-				//currentPlayer.getChronometer().start();*/
-
-
 
 			}
 		});
@@ -191,6 +151,8 @@ public class TimerActivity extends AppCompatActivity {
 		return result;
 	}
 
+	long startTime = 0;
+
 	public void start(){
 		//TODO : check if not already started before doing this
 		if(firstTime) {
@@ -198,14 +160,19 @@ public class TimerActivity extends AppCompatActivity {
 			currentPlayer.getChronometer_total().setBase(SystemClock.elapsedRealtime());
 			currentPlayer.getChronometer_total().start();
 			firstTime = false;
+			startTime = SystemClock.elapsedRealtime();
 		}
-		//chronometer.setBase(SystemClock.elapsedRealtime());
+		System.out.println("system time before: " + SystemClock.elapsedRealtime());
+		chronometer.setBase(SystemClock.elapsedRealtime());
 		chronometer.start();
+		System.out.println("system time after: " + SystemClock.elapsedRealtime());
 
 	}
 
 	public void reset(){
-		//chronometer.setBase(SystemClock.elapsedRealtime());
+		System.out.println("system time before: " + SystemClock.elapsedRealtime());
+		chronometer.setBase(SystemClock.elapsedRealtime());
+		System.out.println("system time after: " + SystemClock.elapsedRealtime());
 	}
 
 
