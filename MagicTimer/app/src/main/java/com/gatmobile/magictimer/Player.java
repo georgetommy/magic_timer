@@ -9,7 +9,7 @@ public class Player {
 
     String name;
 
-    Chronometer chronometer;
+    //Chronometer chronometer;
 
     Chronometer chronometer_total;
 
@@ -21,11 +21,16 @@ public class Player {
 
     }
 
-    public Player(String name,Chronometer chronometer, Chronometer chronometer_total){
+    public Player(String name, Chronometer chronometer_total){
+        this.name=name;
+        this.chronometer_total= chronometer_total;
+    }
+
+  /*  public Player(String name,Chronometer chronometer, Chronometer chronometer_total){
         this.name=name;
         this.chronometer=chronometer;
         this.chronometer_total= chronometer_total;
-    }
+    }*/
 
     public String getName() {
         return name;
@@ -35,13 +40,13 @@ public class Player {
         this.name = name;
     }
 
-    public Chronometer getChronometer() {
+    /*public Chronometer getChronometer() {
         return chronometer;
-    }
+    }*/
 
-    public void setChronometer(Chronometer chronometer) {
+   /* public void setChronometer(Chronometer chronometer) {
         this.chronometer = chronometer;
-    }
+    }*/
 
     public Chronometer getChronometer_total() {
         return chronometer_total;

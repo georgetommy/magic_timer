@@ -33,22 +33,22 @@ public class TimerActivity extends AppCompatActivity {
 
 
 		players.add(
-				new Player(getString(R.string.player_1), (Chronometer) findViewById(R.id.chrono_1),
+				new Player(getString(R.string.player_1),
 						(Chronometer) findViewById(R.id.chrono_total_1)));
 		players.add(
-				new Player(getString(R.string.player_2), (Chronometer) findViewById(R.id.chrono_2),
+				new Player(getString(R.string.player_2),
 						(Chronometer) findViewById(R.id.chrono_total_2)));
 		players.add(
-				new Player(getString(R.string.player_3), (Chronometer) findViewById(R.id.chrono_3),
+				new Player(getString(R.string.player_3),
 						(Chronometer) findViewById(R.id.chrono_total_3)));
 		players.add(
-				new Player(getString(R.string.player_4), (Chronometer) findViewById(R.id.chrono_4),
+				new Player(getString(R.string.player_4),
 						(Chronometer) findViewById(R.id.chrono_total_4)));
 		players.add(
-				new Player(getString(R.string.player_5), (Chronometer) findViewById(R.id.chrono_5),
+				new Player(getString(R.string.player_5),
 						(Chronometer) findViewById(R.id.chrono_total_5)));
 		players.add(
-				new Player(getString(R.string.player_6), (Chronometer) findViewById(R.id.chrono_6),
+				new Player(getString(R.string.player_6),
 						(Chronometer) findViewById(R.id.chrono_total_6)));
 
 		start.setOnClickListener(new View.OnClickListener() {
@@ -79,18 +79,22 @@ public class TimerActivity extends AppCompatActivity {
 
 				System.out.println("saving time for player: " + currentNbPlayer + " / " +
 						currentPlayer.getName() + " = " +
-						chronometer.getBase() + " / " + chronometer.getFormat());
-				currentPlayer.getChronometer().setBase(chronometer.getBase());
-				currentPlayer.getChronometer().stop();
+						chronometer.getBase());
+				currentPlayer.getChronometer_total().setBase( chronometer.getBase());
+				currentPlayer.getChronometer_total().stop();
 				currentNbPlayer = (currentNbPlayer + 1) % totalNbPlayers;
 
 				System.out.println("next player: " + currentNbPlayer + ".");
 				currentPlayer = players.get(currentNbPlayer);
 
 				reset();
+				start();
 				chronometer.start();
-				currentPlayer.getChronometer().setBase(SystemClock.elapsedRealtime());
-				currentPlayer.getChronometer().start();
+				currentPlayer.getChronometer_total().setBase( chronometer.getBase());
+				currentPlayer.getChronometer_total().start();
+
+				//currentPlayer.getChronometer().setBase(SystemClock.elapsedRealtime());
+				//currentPlayer.getChronometer().start();
 
 
 
@@ -102,9 +106,6 @@ public class TimerActivity extends AppCompatActivity {
 
 	public void start(){
 		//TODO : check if not already started before doing this
-		Player currentPlayer = players.get(currentNbPlayer);
-		currentPlayer.getChronometer().setBase(SystemClock.elapsedRealtime());
-		currentPlayer.getChronometer().start();
 		chronometer.setBase(SystemClock.elapsedRealtime());
 		chronometer.start();
 
