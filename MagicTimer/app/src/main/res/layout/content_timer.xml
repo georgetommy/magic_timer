@@ -17,202 +17,202 @@
         android:id="@+id/chronometer_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
         android:layout_above="@+id/start_chrono_main"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18dp" />
 
     <Button
+        android:id="@+id/start_chrono_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/chrono_start"
-        android:id="@+id/start_chrono_main"
         android:layout_alignTop="@+id/reset_chrono_main"
         android:layout_toLeftOf="@+id/reset_chrono_main"
-        android:layout_toStartOf="@+id/reset_chrono_main" />
+        android:layout_toStartOf="@+id/reset_chrono_main"
+        android:text="@string/chrono_start" />
 
     <Button
+        android:id="@+id/pause_chrono_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/chrono_pause"
-        android:id="@+id/pause_chrono_main"
         android:layout_alignTop="@+id/next_chrono_main"
         android:layout_toLeftOf="@+id/next_chrono_main"
-        android:layout_toStartOf="@+id/next_chrono_main" />
+        android:layout_toStartOf="@+id/next_chrono_main"
+        android:text="@string/chrono_pause" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/chrono_reset"
         android:id="@+id/reset_chrono_main"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/chrono_next"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="@string/chrono_reset" />
+
+    <Button
         android:id="@+id/next_chrono_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/start_chrono_main"
         android:layout_toLeftOf="@+id/start_chrono_main"
-        android:layout_toStartOf="@+id/start_chrono_main" />
+        android:layout_toStartOf="@+id/start_chrono_main"
+        android:text="@string/chrono_next" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/player_1"
         android:id="@+id/player_1"
-        android:layout_alignParentTop="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/player_2"
-        android:id="@+id/player_2"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/player_3"
-        android:id="@+id/player_3"
-        android:layout_alignTop="@+id/player_2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/player_4"
-        android:id="@+id/player_4"
-        android:layout_marginTop="74dp"
-        android:layout_below="@+id/pause_chrono_main"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/player_5"
-        android:id="@+id/player_5"
-        android:layout_alignBottom="@+id/player_4"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/player_6"
-        android:id="@+id/player_6"
-        android:layout_alignBottom="@+id/player_5"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Chronometer
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/chrono_total_1"
-        android:layout_below="@+id/player_1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Chronometer
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/chrono_1"
-        android:layout_below="@+id/chrono_total_1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Chronometer
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/chronometer2"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/player_1" />
+
+    <TextView
+        android:id="@+id/player_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/player_2" />
+
+    <TextView
+        android:id="@+id/player_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/player_2"
+        android:text="@string/player_3" />
+
+    <TextView
+        android:id="@+id/player_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/pause_chrono_main"
+        android:layout_marginTop="74dp"
+        android:text="@string/player_4" />
+
+    <TextView
+        android:id="@+id/player_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/player_4"
+        android:layout_centerHorizontal="true"
+        android:text="@string/player_5" />
+
+    <TextView
+        android:id="@+id/player_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/player_5"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/player_6" />
+
+    <Chronometer
+        android:id="@+id/chrono_total_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/player_1" />
+
+    <Chronometer
+        android:id="@+id/chrono_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/chrono_total_1" />
+
+    <Chronometer
+        android:id="@+id/chronometer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/player_2"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/player_2" />
 
     <Chronometer
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/chrono_total_2"
-        android:layout_below="@+id/player_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/player_2"
-        android:layout_alignStart="@+id/player_2" />
+        android:layout_alignStart="@+id/player_2"
+        android:layout_below="@+id/player_2" />
 
     <Chronometer
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/chrono_2"
-        android:layout_below="@+id/chrono_total_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/chrono_total_2"
-        android:layout_alignStart="@+id/chrono_total_2" />
+        android:layout_alignStart="@+id/chrono_total_2"
+        android:layout_below="@+id/chrono_total_2" />
 
     <Chronometer
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/chrono_total_3"
-        android:layout_below="@+id/player_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/player_3"
-        android:layout_alignStart="@+id/player_3" />
+        android:layout_alignStart="@+id/player_3"
+        android:layout_below="@+id/player_3" />
 
     <Chronometer
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/chrono_3"
-        android:layout_below="@+id/chrono_total_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/chrono_total_3"
-        android:layout_alignStart="@+id/chrono_total_3" />
+        android:layout_alignStart="@+id/chrono_total_3"
+        android:layout_below="@+id/chrono_total_3" />
 
     <Chronometer
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/chrono_total_4"
-        android:layout_below="@+id/player_4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Chronometer
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/player_4" />
+
+    <Chronometer
         android:id="@+id/chrono_4"
-        android:layout_below="@+id/chrono_total_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/chrono_total_4" />
 
     <Chronometer
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/chrono_total_5"
-        android:layout_below="@+id/player_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/player_5"
-        android:layout_alignStart="@+id/player_5" />
+        android:layout_alignStart="@+id/player_5"
+        android:layout_below="@+id/player_5" />
 
     <Chronometer
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/chrono_5"
-        android:layout_below="@+id/chrono_total_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/chrono_total_5"
-        android:layout_alignStart="@+id/chrono_total_5" />
+        android:layout_alignStart="@+id/chrono_total_5"
+        android:layout_below="@+id/chrono_total_5" />
 
     <Chronometer
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/chrono_total_6"
-        android:layout_below="@+id/player_6"
-        android:layout_alignLeft="@+id/player_6"
-        android:layout_alignStart="@+id/player_6" />
-
-    <Chronometer
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/player_6"
+        android:layout_alignStart="@+id/player_6"
+        android:layout_below="@+id/player_6" />
+
+    <Chronometer
         android:id="@+id/chrono_6"
-        android:layout_below="@+id/chrono_total_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/chrono_total_6"
-        android:layout_alignStart="@+id/chrono_total_6" />
+        android:layout_alignStart="@+id/chrono_total_6"
+        android:layout_below="@+id/chrono_total_6" />
 
 
 </RelativeLayout>
