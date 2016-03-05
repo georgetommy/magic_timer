@@ -118,22 +118,6 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/player_1" />
 
-  <!--  <Chronometer
-        android:id="@+id/chrono_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/chrono_total_1" />-->
-
- <!--   <Chronometer
-        android:id="@+id/chronometer2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/player_2"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/player_2" />-->
-
     <Chronometer
         android:id="@+id/chrono_total_2"
         android:layout_width="wrap_content"
@@ -141,14 +125,6 @@
         android:layout_alignLeft="@+id/player_2"
         android:layout_alignStart="@+id/player_2"
         android:layout_below="@+id/player_2" />
-
-    <!--<Chronometer
-        android:id="@+id/chrono_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/chrono_total_2"
-        android:layout_alignStart="@+id/chrono_total_2"
-        android:layout_below="@+id/chrono_total_2" />-->
 
     <Chronometer
         android:id="@+id/chrono_total_3"
@@ -158,14 +134,6 @@
         android:layout_alignStart="@+id/player_3"
         android:layout_below="@+id/player_3" />
 
-<!--    <Chronometer
-        android:id="@+id/chrono_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/chrono_total_3"
-        android:layout_alignStart="@+id/chrono_total_3"
-        android:layout_below="@+id/chrono_total_3" />-->
-
     <Chronometer
         android:id="@+id/chrono_total_4"
         android:layout_width="wrap_content"
@@ -174,13 +142,6 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/player_4" />
 
-  <!--  <Chronometer
-        android:id="@+id/chrono_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/chrono_total_4" />-->
 
     <Chronometer
         android:id="@+id/chrono_total_5"
@@ -190,14 +151,6 @@
         android:layout_alignStart="@+id/player_5"
         android:layout_below="@+id/player_5" />
 
-<!--    <Chronometer
-        android:id="@+id/chrono_5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/chrono_total_5"
-        android:layout_alignStart="@+id/chrono_total_5"
-        android:layout_below="@+id/chrono_total_5" />-->
-
     <Chronometer
         android:id="@+id/chrono_total_6"
         android:layout_width="wrap_content"
@@ -205,14 +158,6 @@
         android:layout_alignLeft="@+id/player_6"
         android:layout_alignStart="@+id/player_6"
         android:layout_below="@+id/player_6" />
-
-  <!--  <Chronometer
-        android:id="@+id/chrono_6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/chrono_total_6"
-        android:layout_alignStart="@+id/chrono_total_6"
-        android:layout_below="@+id/chrono_total_6" />-->
 
 
 </RelativeLayout>
