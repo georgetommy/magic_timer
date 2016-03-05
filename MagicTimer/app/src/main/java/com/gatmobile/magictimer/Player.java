@@ -7,15 +7,15 @@ import android.widget.Chronometer;
  */
 public class Player {
 
-    String name;
+   private  String name;
 
     //Chronometer chronometer;
 
-    Chronometer chronometer_total;
+    private Chronometer chronometer_total;
 
-    long timeChronometer;
+    private long timeChronometer;
 
-    long timeChronometerTotal;
+    //private long timeChronometerTotal;
 
     public Player(){
 
@@ -64,11 +64,11 @@ public class Player {
         this.timeChronometer = timeChronometer;
     }
 
-    public long getTimeChronometerTotal() {
+  /*  public long getTimeChronometerTotal() {
         return timeChronometerTotal;
     }
 
     public void setTimeChronometerTotal(long timeChronometerTotal) {
         this.timeChronometerTotal = timeChronometerTotal;
-    }
+    }*/
 }

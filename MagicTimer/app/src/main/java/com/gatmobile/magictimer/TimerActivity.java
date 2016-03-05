@@ -9,6 +9,7 @@ import android.widget.Chronometer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class TimerActivity extends AppCompatActivity {
 
@@ -79,14 +80,63 @@ public class TimerActivity extends AppCompatActivity {
 		next.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Player currentPlayer = players.get(currentNbPlayer);
 
-				System.out.println("saving time for player: " + currentNbPlayer + " / " +
-						currentPlayer.getName() + " = " +
-						chronometer.getBase());
-				currentPlayer.getChronometer_total().setBase(
+				long millis = SystemClock
+						.elapsedRealtime()-chronometer.getBase();
+				System.out.println("I clicked at " + TimeUnit.MILLISECONDS.toSeconds(millis) + " " +
+						"seconds / elapse time is " + SystemClock.elapsedRealtime() + " (" +
+						TimeUnit.MILLISECONDS.toSeconds(SystemClock.elapsedRealtime())+
+						")");
+
+				Player currentPlayer = players.get(currentNbPlayer);
+				currentPlayer.getChronometer_total().stop();
+				currentPlayer.setTimeChronometer(currentPlayer.getTimeChronometer() + millis);
+
+				reset();
+				start();
+
+
+				for(Player player : players){
+					System.out.println(player.getName() + " time : " + TimeUnit.MILLISECONDS
+							.toSeconds
+							(player
+							.getTimeChronometer()));
+				}
+
+				System.out.println("total elapsed: " + TimeUnit.MILLISECONDS.toSeconds
+						(totalTimePassedInOtherTimers(currentPlayer)) + " base should be " +
+						TimeUnit.MILLISECONDS.toSeconds(SystemClock.elapsedRealtime() -
+								totalTimePassedInOtherTimers(currentPlayer)));
+
+				currentNbPlayer = (currentNbPlayer + 1) % totalNbPlayers;
+				currentPlayer = players.get(currentNbPlayer);
+
+
+				currentPlayer.getChronometer_total().setBase(SystemClock.elapsedRealtime() -
+						totalTimePassedInOtherTimers(currentPlayer));
+				currentPlayer.getChronometer_total().start();
+
+				System.out.println("base is " + currentPlayer.getChronometer_total().getBase());
+
+
+				//
+
+				/*System.out.println("saving time for player: " + currentNbPlayer + " / " +
+						currentPlayer.getName() + " = " + currentPlayer.getChronometer_total()
+						.getBase() + " / " +
+						chronometer.getBase() + " elapsed " + SystemClock.elapsedRealtime() + ", "
+
+						);
+				System.out.println("time gone in seconds " + TimeUnit.MILLISECONDS.toSeconds(
+						(SystemClock.elapsedRealtime()-chronometer.getBase())));
+				currentPlayer.setTimeChronometer(currentPlayer.getTimeChronometer() + SystemClock.elapsedRealtime()-chronometer.getBase());
+				System.out.println("total time in seconds: " + TimeUnit.MILLISECONDS.toSeconds
+						(currentPlayer.getTimeChronometer()));
+				*//*currentPlayer.getChronometer_total().setBase(
 						SystemClock.elapsedRealtime() -	(+currentPlayer.getChronometer_total()
-								.getBase() + chronometer.getBase()));
+								.getBase() + chronometer.getBase()));*//*
+				currentPlayer.getChronometer_total().setBase(currentPlayer.getTimeChronometer());
+				currentPlayer.getChronometer_total().start();
 				currentPlayer.getChronometer_total().stop();
 				currentNbPlayer = (currentNbPlayer + 1) % totalNbPlayers;
 
@@ -100,13 +150,14 @@ public class TimerActivity extends AppCompatActivity {
 				chronometer.start();
 				//currentPlayer.getChronometer_total().setBase(
 				//		chronometer.getBase());
-				currentPlayer.getChronometer_total().setBase(
+				*//*currentPlayer.getChronometer_total().setBase(
 						SystemClock.elapsedRealtime() -	(+currentPlayer.getChronometer_total()
-								.getBase() + chronometer.getBase()));
+								.getBase() + chronometer.getBase()));*//*
+
 				currentPlayer.getChronometer_total().start();
 
 				//currentPlayer.getChronometer().setBase(SystemClock.elapsedRealtime());
-				//currentPlayer.getChronometer().start();
+				//currentPlayer.getChronometer().start();*/
 
 
 
@@ -116,15 +167,45 @@ public class TimerActivity extends AppCompatActivity {
 
 	}
 
+	boolean firstTime = true;
+
+	public long totalTimePassedInOtherTimers(Player currentPlayer){
+		long result = 0;
+		for(int i = 0 ; i < players.size() ; i++){
+			Player player = players.get(i);
+			if(player.equals(currentPlayer)){
+				System.out.println("not counting " + player.getName());
+				//continue;
+			}
+
+			result += player.getTimeChronometer();
+		}
+		return result;
+	}
+
+	public long totalTimePassed(){
+		long result = 0;
+		for(Player player : players){
+			result += player.getTimeChronometer();
+		}
+		return result;
+	}
+
 	public void start(){
 		//TODO : check if not already started before doing this
-		chronometer.setBase(SystemClock.elapsedRealtime());
+		if(firstTime) {
+			Player currentPlayer = players.get(currentNbPlayer);
+			currentPlayer.getChronometer_total().setBase(SystemClock.elapsedRealtime());
+			currentPlayer.getChronometer_total().start();
+			firstTime = false;
+		}
+		//chronometer.setBase(SystemClock.elapsedRealtime());
 		chronometer.start();
 
 	}
 
 	public void reset(){
-		chronometer.setBase(SystemClock.elapsedRealtime());
+		//chronometer.setBase(SystemClock.elapsedRealtime());
 	}
 
 
