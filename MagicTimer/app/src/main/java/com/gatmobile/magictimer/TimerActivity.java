@@ -1,6 +1,7 @@
 package com.gatmobile.magictimer;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -53,7 +54,7 @@ public class TimerActivity extends AppCompatActivity {
 		start.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				chronometer.start();
+				start();
 			}
 		});
 
@@ -67,24 +68,50 @@ public class TimerActivity extends AppCompatActivity {
 		reset.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				chronometer.setFormat(null);
+				reset();
 			}
 		});
 
 		next.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				System.out.println("saving time for player: " + currentNbPlayer + " / " +
-						players.get(currentNbPlayer).getName() + " = " +
-						players.get(currentNbPlayer).getChronometer().getFormat());
+				Player currentPlayer = players.get(currentNbPlayer);
 
+				System.out.println("saving time for player: " + currentNbPlayer + " / " +
+						currentPlayer.getName() + " = " +
+						chronometer.getBase() + " / " + chronometer.getFormat());
+				currentPlayer.getChronometer().setBase(chronometer.getBase());
+				currentPlayer.getChronometer().stop();
 				currentNbPlayer = (currentNbPlayer + 1) % totalNbPlayers;
+
 				System.out.println("next player: " + currentNbPlayer + ".");
+				currentPlayer = players.get(currentNbPlayer);
+
+				reset();
+				chronometer.start();
+				currentPlayer.getChronometer().setBase(SystemClock.elapsedRealtime());
+				currentPlayer.getChronometer().start();
+
+
 
 			}
 		});
 
 
+	}
+
+	public void start(){
+		//TODO : check if not already started before doing this
+		Player currentPlayer = players.get(currentNbPlayer);
+		currentPlayer.getChronometer().setBase(SystemClock.elapsedRealtime());
+		currentPlayer.getChronometer().start();
+		chronometer.setBase(SystemClock.elapsedRealtime());
+		chronometer.start();
+
+	}
+
+	public void reset(){
+		chronometer.setBase(SystemClock.elapsedRealtime());
 	}
 
 
