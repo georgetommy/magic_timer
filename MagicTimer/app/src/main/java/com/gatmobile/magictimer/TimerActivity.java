@@ -51,6 +51,10 @@ public class TimerActivity extends AppCompatActivity {
 				new Player(getString(R.string.player_6),
 						(Chronometer) findViewById(R.id.chrono_total_6)));
 
+		for(Player player : players){
+			player.getChronometer_total().setBase(SystemClock.elapsedRealtime());
+		}
+
 		start.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -80,17 +84,25 @@ public class TimerActivity extends AppCompatActivity {
 				System.out.println("saving time for player: " + currentNbPlayer + " / " +
 						currentPlayer.getName() + " = " +
 						chronometer.getBase());
-				currentPlayer.getChronometer_total().setBase( chronometer.getBase());
+				currentPlayer.getChronometer_total().setBase(
+						SystemClock.elapsedRealtime() -	(+currentPlayer.getChronometer_total()
+								.getBase() + chronometer.getBase()));
 				currentPlayer.getChronometer_total().stop();
 				currentNbPlayer = (currentNbPlayer + 1) % totalNbPlayers;
 
-				System.out.println("next player: " + currentNbPlayer + ".");
-				currentPlayer = players.get(currentNbPlayer);
 
+				currentPlayer = players.get(currentNbPlayer);
+				System.out.println("the time for next player: " + currentNbPlayer + " / " +
+						currentPlayer.getName() + " = " +
+						chronometer.getBase());
 				reset();
 				start();
 				chronometer.start();
-				currentPlayer.getChronometer_total().setBase( chronometer.getBase());
+				//currentPlayer.getChronometer_total().setBase(
+				//		chronometer.getBase());
+				currentPlayer.getChronometer_total().setBase(
+						SystemClock.elapsedRealtime() -	(+currentPlayer.getChronometer_total()
+								.getBase() + chronometer.getBase()));
 				currentPlayer.getChronometer_total().start();
 
 				//currentPlayer.getChronometer().setBase(SystemClock.elapsedRealtime());
