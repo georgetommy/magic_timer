@@ -66,7 +66,7 @@ public class TimerActivity extends AppCompatActivity {
 		pause.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				chronometer.stop();
+				pause();
 			}
 		});
 
@@ -79,49 +79,7 @@ public class TimerActivity extends AppCompatActivity {
 
 		next.setOnClickListener(new View.OnClickListener() {
 			@Override
-			public void onClick(View v) {
-
-				long millis = SystemClock
-						.elapsedRealtime()-chronometer.getBase();
-				System.out.println("I clicked at " + TimeUnit.MILLISECONDS.toSeconds(millis) + " " +
-						"seconds / elapse time is " + SystemClock.elapsedRealtime() + " (" +
-						TimeUnit.MILLISECONDS.toSeconds(SystemClock.elapsedRealtime())+
-						")");
-
-
-				Player currentPlayer = players.get(currentNbPlayer);
-				currentPlayer.getChronometer_total().stop();
-				currentPlayer.setTimeChronometer(currentPlayer.getTimeChronometer() + millis);
-
-				reset();
-				start();
-
-
-				for(Player player : players){
-					System.out.println(player.getName() + " time : " + TimeUnit.MILLISECONDS
-							.toSeconds
-							(player
-							.getTimeChronometer()));
-				}
-
-				System.out.println("total elapsed: " + TimeUnit.MILLISECONDS.toSeconds
-						(totalTimePassedInOtherTimers(currentPlayer)) + " base should be " +
-						TimeUnit.MILLISECONDS.toSeconds(SystemClock.elapsedRealtime() -
-								totalTimePassedInOtherTimers(currentPlayer)));
-
-				currentNbPlayer = (currentNbPlayer + 1) % totalNbPlayers;
-				currentPlayer = players.get(currentNbPlayer);
-
-				currentPlayer.getChronometer_total().setBase(SystemClock.elapsedRealtime() -
-						(TimeUnit.MILLISECONDS.toMinutes(currentPlayer.getTimeChronometer()) *
-								60000 + TimeUnit.MILLISECONDS.toSeconds(currentPlayer.getTimeChronometer
-								()) *
-								1000));
-				currentPlayer.getChronometer_total().start();
-
-				System.out.println("base is " + currentPlayer.getChronometer_total().getBase());
-
-			}
+			public void onClick(View v) { next();	}
 		});
 
 
@@ -153,6 +111,48 @@ public class TimerActivity extends AppCompatActivity {
 
 	long startTime = 0;
 
+	private void next(){
+		long millis = SystemClock
+				.elapsedRealtime()-chronometer.getBase();
+		System.out.println("I clicked at " + TimeUnit.MILLISECONDS.toSeconds(millis) + " " +
+				"seconds / elapse time is " + SystemClock.elapsedRealtime() + " (" +
+				TimeUnit.MILLISECONDS.toSeconds(SystemClock.elapsedRealtime())+
+				")");
+
+
+		Player currentPlayer = players.get(currentNbPlayer);
+		currentPlayer.getChronometer_total().stop();
+		currentPlayer.setTimeChronometer(currentPlayer.getTimeChronometer() + millis);
+
+		reset();
+		start();
+
+
+		for(Player player : players){
+			System.out.println(player.getName() + " time : " + TimeUnit.MILLISECONDS
+					.toSeconds
+							(player
+									.getTimeChronometer()));
+		}
+
+		System.out.println("total elapsed: " + TimeUnit.MILLISECONDS.toSeconds
+				(totalTimePassedInOtherTimers(currentPlayer)) + " base should be " +
+				TimeUnit.MILLISECONDS.toSeconds(SystemClock.elapsedRealtime() -
+						totalTimePassedInOtherTimers(currentPlayer)));
+
+		currentNbPlayer = (currentNbPlayer + 1) % totalNbPlayers;
+		currentPlayer = players.get(currentNbPlayer);
+
+		currentPlayer.getChronometer_total().setBase(SystemClock.elapsedRealtime() -
+				(TimeUnit.MILLISECONDS.toMinutes(currentPlayer.getTimeChronometer()) *
+						60000 + TimeUnit.MILLISECONDS.toSeconds(currentPlayer.getTimeChronometer
+						()) *
+						1000));
+		currentPlayer.getChronometer_total().start();
+
+		System.out.println("base is " + currentPlayer.getChronometer_total().getBase());
+	}
+
 	public void start(){
 		//TODO : check if not already started before doing this
 		if(firstTime) {
@@ -173,6 +173,24 @@ public class TimerActivity extends AppCompatActivity {
 		System.out.println("system time before: " + SystemClock.elapsedRealtime());
 		chronometer.setBase(SystemClock.elapsedRealtime());
 		System.out.println("system time after: " + SystemClock.elapsedRealtime());
+	}
+
+	private boolean stopped = false;
+
+	private long timeStopped = 0;
+
+	public void pause(){
+		System.out.println("pausing.");
+		if(!stopped) {
+			Player currentPlayer = players.get(currentNbPlayer);
+			currentPlayer.getChronometer_total().stop();
+			chronometer.stop();
+			stopped = true;
+		}else{
+			Player currentPlayer = players.get(currentNbPlayer);
+			currentPlayer.getChronometer_total().start();
+			chronometer.start();
+		}
 	}
 
 
