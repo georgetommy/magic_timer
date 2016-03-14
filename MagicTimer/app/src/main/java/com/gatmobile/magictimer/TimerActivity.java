@@ -186,10 +186,16 @@ public class TimerActivity extends AppCompatActivity {
 			currentPlayer.getChronometer_total().stop();
 			chronometer.stop();
 			stopped = true;
+			timeStopped = SystemClock.elapsedRealtime();
 		}else{
 			Player currentPlayer = players.get(currentNbPlayer);
+			long intervalOnPause = (SystemClock.elapsedRealtime() - timeStopped);
+			chronometer.setBase(chronometer.getBase() + intervalOnPause);
+			currentPlayer.getChronometer_total().setBase(currentPlayer.getChronometer_total()
+					.getBase() + intervalOnPause);
 			currentPlayer.getChronometer_total().start();
 			chronometer.start();
+			stopped = false;
 		}
 	}
 
