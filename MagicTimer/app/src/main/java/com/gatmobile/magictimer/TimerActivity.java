@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -111,6 +112,12 @@ public class TimerActivity extends AppCompatActivity {
 
 	long startTime = 0;
 
+	private Player updatePlayer(int playerIndex){
+		Player currentPlayer = players.get(playerIndex);
+		((TextView)findViewById (R.id.player_current)).setText (currentPlayer.getName());
+		return currentPlayer;
+	}
+
 	private void next(){
 		long millis = SystemClock
 				.elapsedRealtime()-chronometer.getBase();
@@ -120,9 +127,10 @@ public class TimerActivity extends AppCompatActivity {
 				")");
 
 
-		Player currentPlayer = players.get(currentNbPlayer);
+		Player currentPlayer = updatePlayer(currentNbPlayer);
 		currentPlayer.getChronometer_total().stop();
 		currentPlayer.setTimeChronometer(currentPlayer.getTimeChronometer() + millis);
+		((TextView)findViewById (R.id.player_current)).setText (currentPlayer.getName());
 
 		reset();
 		start();
@@ -141,7 +149,7 @@ public class TimerActivity extends AppCompatActivity {
 						totalTimePassedInOtherTimers(currentPlayer)));
 
 		currentNbPlayer = (currentNbPlayer + 1) % totalNbPlayers;
-		currentPlayer = players.get(currentNbPlayer);
+		currentPlayer =  updatePlayer(currentNbPlayer);
 
 		currentPlayer.getChronometer_total().setBase(SystemClock.elapsedRealtime() -
 				(TimeUnit.MILLISECONDS.toMinutes(currentPlayer.getTimeChronometer()) *
@@ -156,7 +164,7 @@ public class TimerActivity extends AppCompatActivity {
 	public void start(){
 		//TODO : check if not already started before doing this
 		if(firstTime) {
-			Player currentPlayer = players.get(currentNbPlayer);
+			Player currentPlayer = updatePlayer(currentNbPlayer);
 			currentPlayer.getChronometer_total().setBase(SystemClock.elapsedRealtime());
 			currentPlayer.getChronometer_total().start();
 			firstTime = false;
@@ -182,13 +190,13 @@ public class TimerActivity extends AppCompatActivity {
 	public void pause(){
 		System.out.println("pausing.");
 		if(!stopped) {
-			Player currentPlayer = players.get(currentNbPlayer);
+			Player currentPlayer = updatePlayer(currentNbPlayer);
 			currentPlayer.getChronometer_total().stop();
 			chronometer.stop();
 			stopped = true;
 			timeStopped = SystemClock.elapsedRealtime();
 		}else{
-			Player currentPlayer = players.get(currentNbPlayer);
+			Player currentPlayer = updatePlayer(currentNbPlayer);
 			long intervalOnPause = (SystemClock.elapsedRealtime() - timeStopped);
 			chronometer.setBase(chronometer.getBase() + intervalOnPause);
 			currentPlayer.getChronometer_total().setBase(currentPlayer.getChronometer_total()

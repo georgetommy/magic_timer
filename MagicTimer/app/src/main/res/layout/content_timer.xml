@@ -58,6 +58,15 @@
         android:text="@string/chrono_next" />
 
     <TextView
+        android:id="@+id/player_current"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/player_current"
+        android:layout_above="@+id/chronometer_main"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="33dp"/>
+
+    <TextView
         android:id="@+id/player_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -158,6 +167,8 @@
         android:layout_alignLeft="@+id/player_6"
         android:layout_alignStart="@+id/player_6"
         android:layout_below="@+id/player_6" />
+
+
 
 
 </RelativeLayout>

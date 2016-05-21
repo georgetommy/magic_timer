@@ -20,6 +20,7 @@
     <string name="player_4">Player 4</string>
     <string name="player_5">Player 5</string>
     <string name="player_6">Player 6</string>
+    <string name="player_current">Player 1</string>
 
 
 </resources>
